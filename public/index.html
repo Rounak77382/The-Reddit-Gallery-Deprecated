@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; img-src * 'self' data:; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline';">
+    <link href="/video-js.min.css" rel="stylesheet">
+    
+    <title>Reddit Gallery</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="header">
+
+        <h1>Reddit Gallery</h1>
+        <form id="redditForm">
+            <input list="subreddits" id="subredditName" placeholder="Enter subreddit name" autocomplete="off">
+            <datalist id="subreddits">
+            </datalist>
+            <select id="postTime">
+                <option value="day">Today</option>
+                <option value="week">Week</option>
+                <option value="month">Month</option>
+                <option value="year">Year</option>
+                <option value="all">All</option>
+            </select>
+            <select id="postType">
+                <option value="top">Top</option>
+                <option value="new">New</option>
+                <option value="hot">Hot</option>
+                <option value="rising">Rising</option>
+            </select>
+            <input type="number" id="postLimit" placeholder="10" value="10">
+            <button id="formbutton" type="submit">
+                <img id="searchbtn" src="icons/search.svg" alt="Search Icon">
+            </button>
+        </form>
+    </div>
+    
+    <div id="gallery">
+
+        <!-- <div id="media">
+            <div id="card">
+                <div id="upperslider">
+                    <a href="https://www.reddit.com/user/viamms/" id="userinfo">
+                        <img id="profilepic" src="https://styles.redditmedia.com/t5_63wezw/styles/profileIcon_g3dyudqkfl4b1.jpg?width=256&height=256&crop=256:256,smart&s=ca0b760d4d83e467b756feb7148ecb45b8ff59de" alt="">
+                        <div id="reditor"title="u/viamms">u/viamms</div>
+                        <div id="flair" title="Cosplayer">Cosplayer</div>
+                        <img id="dot" src="/public/icons/dot.svg" alt="">
+                        <div id="since">2 hr. ago</div>
+                    </a>
+                    <p id="title" title="Eula Lawrence without her costume💙">EulagggLawrence without her costume💙</p>
+                </div>
+                <a href="https://www.reddit.com/r/cosplaygirls/comments/1b7bmdy/eula_lawrence_without_her_costume/" id="lowerslider">
+                    <div id="votes">
+                        <img id="upvote" src="/public/icons/upvote.png" alt="">
+                        <div id="upCount">1.2k</div>
+                        <img id="downvote" src="/public/icons/downvote.png" alt="">
+                        <div id="downCount">1.2k</div>
+                    </div>
+
+                    <div id="comments">
+                        <img id="comment" src="/public/icons/comment.svg" alt="">
+                        <div id="commentCount">600</div>
+                    </div>
+                </a>
+            </div>
+            <img id="content"  src="/media/oiledass/a bit lubricated to slide better by ivyclark.gif">
+        </div> 
+
+        <div id="media">
+            <div id="card">
+                <div id="upperslider">
+                    <a href="https://www.reddit.com/user/viamms/" id="userinfo">
+                        <img id="profilepic" src="https://styles.redditmedia.com/t5_63wezw/styles/profileIcon_g3dyudqkfl4b1.jpg?width=256&height=256&crop=256:256,smart&s=ca0b760d4d83e467b756feb7148ecb45b8ff59de" alt="">
+                        <div id="reditor" title="u/viamms">u/viamms</div>
+                        <div id="flair">Cosplayer</div>
+                        <img id="dot" src="/public/icons/dot.svg" alt="">
+                        <div id="since">2 hr. ago</div>
+                    </a>
+                    <p id="title">Eula Lawrence without her costume💙</p>
+                </div>
+                <a href="https://www.reddit.com/r/cosplaygirls/comments/1b7bmdy/eula_lawrence_without_her_costume/" id="lowerslider">
+                    <div id="votes">
+                        <img id="upvote" src="/public/icons/upvote.png" alt="">
+                        <div id="upCount">1.2k</div>
+                        <img id="downvote" src="/public/icons/downvote.png" alt="">
+                        <div id="downCount">1.2k</div>
+                    </div>
+
+                    <div id="comments">
+                        <img id="comment" src="/public/icons/comment.svg" alt="">
+                        <div id="commentCount">600</div>
+                    </div>
+                </a>
+            </div>
+            <video id="content" src="media/oiledass/Alexis Rodriguez Hot Ass by Astrid0003.mp4" controls="true">
+        </div>  -->
+
+
+    </div>
+
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

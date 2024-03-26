@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Video Player</title>
+  <link rel="stylesheet" href="/customplayer.css">
+</head>
+<body>
+
+  <div class="video-container">
+    <video id="content">
+        <source src="/video2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <!-- <div class="video-controls">
+
+        <div class="left-controls" >
+          <button id="playButton" class="play-pause">
+
+            <img id="play" src="/public/icons/play.svg" alt="play" style="display: block;">
+            <img id="pause" src="/public/icons/pause.svg" alt="pause"  style="display: none;">   
+
+            </button>
+            <div class="seek-bar">
+                <input type="range" id="seekSlider" min="0" max="100" value="0" step="0.0001">
+            </div>
+            
+        </div>
+
+        <button id="muteButton" class="volume">
+          <i class="material-icons">
+          <img id="unmute" src="/public/icons/speaker-high.svg" alt="" style="display: flex;">
+          <img id="mute" src="/public/icons/speaker-slash.svg" alt=""   style="display: none;">
+          </i>
+          <div class="volume-bar">
+              <input type="range" id="volumeSlider" min="0" max="1" value="1" step="0.1">
+          </div>
+        </button>
+
+        <div class="right-controls">
+
+          
+          <button id="fullScreenButton" class="fullscreen">
+            <img src="/public/icons/corners-out.svg"   alt="">
+          </button>
+            <div style="position: relative;">
+                <button id="speedButton" class="playback-speed">
+
+                <img src="/public/icons/gauge.svg"  alt="">
+
+                </button>
+                <div class="speed-dropdown">
+                    <ul>
+                        <li data-speed="0.5">0.5x</li>
+                        <li data-speed="1.0">1.0x </li>
+                        <li data-speed="1.5">1.5x</li>
+                        <li data-speed="2.0">2.0x</li>
+                    </ul>
+                </div>
+            </div>
+            <button id="pipButton" class="pip">
+              <img src="/public/icons/picture-in-picture.svg"  alt="">
+            </button>
+            <button id="downloadButton" class="download">
+              <img src="/public/icons/download.svg"  alt="">
+            </button>
+    
+            <button id="moreOptions" style="position: relative;">
+                <img src="/public/icons/dots-three-vertical.svg"   alt="">
+
+                <div id="options-dropdown">
+                  <ul>
+                    <li id="speedButton" class="playback-speed">Speed</li>
+                    <li id="pipButton" class="pip">PiP
+                    </li>
+                    <li id="downloadButton" class="download">Download</li>
+                  </ul>
+                </div>
+              </button>
+        </div>
+        </div> -->
+</div>
+
+
+  <script src="/customplayer.js"></script>
+
+</body>
+</html>
