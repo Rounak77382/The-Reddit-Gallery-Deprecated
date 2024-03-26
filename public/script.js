@@ -6,17 +6,17 @@ socket.on('image', (imageData) => {
 });
 
 
-fetch('/subreddits')
-    .then(response => response.json())
-    .then(subredditNames => {
-        const datalist = document.getElementById('subreddits');
-        subredditNames.forEach(name => {
-            const option = document.createElement('option');
-            option.value = name;
-            datalist.appendChild(option);
-        });
-    })
-    .catch(error => console.error('Error:', error));
+// fetch('/subreddits')
+//     .then(response => response.json())
+//     .then(subredditNames => {
+//         const datalist = document.getElementById('subreddits');
+//         subredditNames.forEach(name => {
+//             const option = document.createElement('option');
+//             option.value = name;
+//             datalist.appendChild(option);
+//         });
+//     })
+//     .catch(error => console.error('Error:', error));
 
 let timer;
 document.getElementById('subredditName').addEventListener('input', (e) => {
