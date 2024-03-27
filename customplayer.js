@@ -1,7 +1,7 @@
 //generation of the custom video player
 
 let videocontrols = document.createElement('div');
-div.className = 'video-controls';
+videocontrols.className = 'video-controls';
 
 let leftControls = document.createElement('div');
 leftControls.className = 'left-controls';
@@ -101,16 +101,87 @@ speedButton.className = 'playback-speed';
 let speedImg = document.createElement('img');
 speedImg.src = '/public/icons/gauge.svg';
 speedImg.alt = '';
-
 speedButton.appendChild(speedImg);
+
+let speedDropdown = document.createElement('div');
+speedDropdown.className = 'speed-dropdown';
+let speedList = document.createElement('ul');
+let speedOptions = [
+  { speed: "0.5", text: "0.5x" },
+  { speed: "1.0", text: "1.0x" },
+  { speed: "1.5", text: "1.5x" },
+  { speed: "2.0", text: "2.0x" }
+];
+
+speedOptions.forEach(option => {
+  let speedListItem = document.createElement('li');
+  speedListItem.dataset.speed = option.speed;
+  speedListItem.textContent = option.text;
+  speedList.appendChild(speedListItem);
+});
+
+speedDropdown.appendChild(speedList);
+speedButtonContainer.appendChild(speedDropdown);
+
+
+
 speedButtonContainer.appendChild(speedButton);
+
+let pipButton = document.createElement('button');
+pipButton.id = 'pipButton';
+pipButton.className = 'pip';
+let pipImg = document.createElement('img');
+pipImg.src = '/public/icons/picture-in-picture.svg';
+pipImg.alt = '';
+pipButton.appendChild(pipImg);
+
+let downloadButton = document.createElement('button');
+downloadButton.id = 'downloadButton';
+downloadButton.className = 'download';
+let downloadImg = document.createElement('img');
+downloadImg.src = '/public/icons/download.svg';
+downloadImg.alt = '';
+downloadButton.appendChild(downloadImg);
+
+
+
+
+let moreOptions = document.createElement('button');
+moreOptions.id = 'moreOptions';
+moreOptions.className = 'more-options';
+let moreOptionsImg = document.createElement('img');
+moreOptionsImg.src = '/public/icons/dots-three-vertical.svg';
+moreOptionsImg.alt = '';
+let moreOptionsDropdown = document.createElement('div');
+moreOptionsDropdown.id = 'options-dropdown';
+
+let moreOptionsList = document.createElement('ul');
+let moreOptionsItems = [
+  { id: 'speedButton', text: 'Playback Speed' },
+  { id: 'pipButton', text: 'Picture-in-Picture' },
+  { id: 'downloadButton', text: 'Download' }
+];
+moreOptionsItems.forEach(item => {
+  let moreOptionsListItem = document.createElement('li');
+  moreOptionsListItem.id = item.id;
+  moreOptionsListItem.textContent = item.text;
+  moreOptionsList.appendChild(moreOptionsListItem);
+});
+moreOptionsDropdown.appendChild(moreOptionsList);
+moreOptions.appendChild(moreOptionsImg);
+moreOptions.appendChild(moreOptionsDropdown);
+
 
 rightControls.appendChild(fullScreenButton);
 rightControls.appendChild(speedButtonContainer);
+rightControls.appendChild(pipButton);
+rightControls.appendChild(downloadButton);
+rightControls.appendChild(moreOptions);
 
 videocontrols.appendChild(leftControls);
 videocontrols.appendChild(muteButton);
 videocontrols.appendChild(rightControls);
+
 
 const videoContainer = document.querySelector('.video-container');
 
@@ -130,14 +201,13 @@ const unmute = document.getElementById('muteButton').querySelector('i');
 
 
 
-const speedDropdown = document.querySelector('.speed-dropdown');
-const pipButton = document.getElementById('pipButton');
-const downloadButton = document.getElementById('downloadButton');
+
+
 
 const videoControls = document.querySelector('.video-controls');
 var playIcon = document.getElementById('play');
 var pauseIcon = document.getElementById('pause');
-var moreOptions = document.querySelector('#moreOptions');
+
 
 playButton.addEventListener('click', function() {
     if (video.paused == true) {
@@ -157,8 +227,6 @@ playButton.addEventListener('click', function() {
     }
 });
 
-var unmuteIcon = document.getElementById('unmute');
-var muteIcon = document.getElementById('mute');
 
 videoContainer.addEventListener('mouseover', () => {
 videoControls.style.opacity = '1';
@@ -242,52 +310,54 @@ unmute.addEventListener('click', () => {
 });
 
 
-  // Check for browser support (modify as needed)
-  if (document.pictureInPictureEnabled) {
+
     pipButton.addEventListener('click', () => {
       if (video.requestPictureInPicture) {
         video.requestPictureInPicture();
       }
     });
-  } else {
-    pipButton.classList.add('disabled'); // Add a disabled class for visual indication
-  }
   
-  speedButton.addEventListener('click', () => {
-    speedDropdown.classList.toggle('active');
-  });
 
-  speedButton.addEventListener('click', () => {
-    speedDropdown.classList.toggle('show-dropdown');
-  });
+    speedButton.addEventListener('click', () => {
+      speedDropdown.classList.toggle('active');
+      speedDropdown.classList.toggle('show-dropdown');
+    });
   
   document.addEventListener('click', (event) => {
     if (!speedDropdown.contains(event.target) && speedDropdown.classList.contains('active')) {
       speedDropdown.classList.remove('active');
     }
   });
+
+
   
-  const speedOptions = speedDropdown.querySelectorAll('li');
-  speedOptions.forEach(option => {
-    option.addEventListener('click', () => {
-      const selectedSpeed = option.dataset.speed;
-      video.playbackRate = selectedSpeed;
-      speedDropdown.classList.remove('active');
-      speedDropdown.classList.remove('show-dropdown');
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const speedDropdown = document.querySelector('.speed-dropdown');
+    if (speedDropdown) {
+      const speedOptions = speedDropdown.querySelectorAll('li');
+      speedOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          const selectedSpeed = option.dataset.speed;
+          video.playbackRate = selectedSpeed;
+          speedDropdown.classList.remove('active');
+          speedDropdown.classList.remove('show-dropdown');
 
-      // Reset color for all options
-      speedOptions.forEach(opt => opt.style.color = '');
+          // Reset color for all options
+          speedOptions.forEach(opt => opt.style.color = '');
 
-      // Change color of selected option
-      option.style.color = 'red'; // Change 'red' to any color you want
-    });
+          // Change color of selected option
+          option.style.color = 'red'; // Change 'red' to any color you want
+        });
+      });
+    }
   });
 
   
-  // Download functionality (highly browser-dependent, consider server-side handling)
+  document.addEventListener('DOMContentLoaded', (event) => {
   downloadButton.addEventListener('click', () => {
     alert('Download functionality is not fully supported by browsers yet. Consider server-side solutions.');
   });
+});
   
   // Responsive behavior: Hide non-essential controls on small screens
   
@@ -339,14 +409,19 @@ unmute.addEventListener('click', () => {
   // Call updateSlider for volumeSlider initially with different colors if needed
   updateSlider(volumeSlider);
 
-  document.getElementById('moreOptions').addEventListener('click', function() {
-    var moreOptionsDiv = document.getElementById('options-dropdown');
-    if (moreOptionsDiv.style.display === 'none' || moreOptionsDiv.style.display === '') {
-        moreOptionsDiv.style.display = 'block';
-    } else {
-        moreOptionsDiv.style.display = 'none';
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const moreOptions = document.getElementById('moreOptions');
+    if (moreOptions) {
+      moreOptions.addEventListener('click', function() {
+        var moreOptionsDiv = document.getElementById('options-dropdown');
+        if (moreOptionsDiv.style.display === 'none' || moreOptionsDiv.style.display === '') {
+            moreOptionsDiv.style.display = 'block';
+        } else {
+            moreOptionsDiv.style.display = 'none';
+        }
+      });
     }
-});
+  });
     
 const options = document.querySelectorAll('#options-dropdown li');
 options.forEach(option => {
