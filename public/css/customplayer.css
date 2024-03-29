@@ -1,13 +1,7 @@
 
-body{
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #131f23;
-}
 
-.video-container {
-  --video-height: 500px;
+/* .video-container {
+  --video-height: 800px;
   height: var(--video-height);
   display: flex;
   flex-direction: column-reverse;
@@ -19,7 +13,7 @@ body{
 .video-container video {
     width: 100%;
     height: 100%;
-}
+} */
 
 
 
@@ -30,6 +24,7 @@ body{
     height: 10%;
     max-height:40px;
     min-height: 20px;
+    border-radius: 10px;
     display: flex;
     align-items: flex-end;
     justify-content: start;
@@ -118,7 +113,7 @@ body{
 
 
   #muteButton:hover {
-    max-width:150px;
+    max-width:125px;
     width: 60%;
     transition: width 0.2s ease-in-out;
   }
@@ -129,12 +124,12 @@ body{
 .volume-bar {
     position: relative;
     visibility: hidden;
-    width: 0;
+    width: 0%;
 }
 
 .volume-bar input {
     display: block;
-    width: 0;
+    width: 0%;
 }
 
 .volume:hover .volume-bar input {
@@ -242,6 +237,7 @@ body{
 .seek-bar input[type="range"]::-moz-range-thumb, .volume-bar input[type="range"]::-moz-range-thumb {
     width: 12px;
     height: 12px;
+    
     border-radius: 50%;
     background: #4CAF50;
     cursor: pointer;
@@ -252,7 +248,7 @@ body{
 
 
 
-  img{
+  .icon{
     width: calc(var(--video-height)*0.05);
     max-width: 22px;
     min-width: 10px;
@@ -262,7 +258,7 @@ body{
     transition: background-color 0.2s ease-in-out;
   }
 
-  img:hover{
+  .icon:hover{
     cursor: pointer;
     background-color: #ffffff4b;
   }

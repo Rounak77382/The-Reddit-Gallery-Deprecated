@@ -236,12 +236,20 @@ function displayImage(imageData) {
             mediaElement.src = `${image.url.trim().replace('public/', '')}`;
             mediaElement.alt = image.title;
         } else if (/\.(mp4|webm|ogg)$/i.test(image.url)) {
-            mediaElement = document.createElement('video');
-            mediaElement.controls = true;
-            mediaElement.preload = 'auto'; 
-            mediaElement.volume = 0.1; 
-            mediaElement.src = `${image.url.trim().replace('public/', '')}`;
-            mediaElement.alt = image.title;
+
+
+
+            mediaElement = document.createElement('div');
+            mediaElement.className = 'video-container';
+            mediaElement.id = 'content';
+            const video = document.createElement('video');
+            video.preload = 'auto';
+            video.volume = 0.1;
+            video.src = `${image.url.trim().replace('public/', '')}`;
+            video.alt = image.title;
+            mediaElement.appendChild(video);
+            addCustomControls(mediaElement);
+
         } else {
             console.error("Invalid image data:", imageData);
             return;
