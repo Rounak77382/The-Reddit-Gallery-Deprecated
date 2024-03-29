@@ -19,17 +19,17 @@ These instructions will get you a copy of the project up and running on your loc
 ```sh
 git clone https://github.com/yourusername/redditdownloader_nodejs.git
 ```
-2. Install PRAW
+2. Install Python packages
 
 ```sh
-pip install praw
+pip install -r requirements.txt
 ```
 
 3. Install NPM packages
 ```sh
 npm install
 ```
-4. Install NPM packages
+4. start the server
 ```sh
 npm start
 ```
