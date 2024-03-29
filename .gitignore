@@ -1,3 +1,7 @@
 node_modules/
 .vscode/
 public/media/
+listofsubreddits.py
+redditapitest.py
+backup.txt
+subreddits.txt
