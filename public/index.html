@@ -1,52 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src *; img-src * 'self' data:; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline';">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy"
+            content="default-src *; img-src * 'self' data:; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline';">
 
-    
-    <title>Reddit Gallery</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/customplayer.css">
-</head>
-<body>
-    <div class="header">
+        <title>Reddit Gallery</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/customplayer.css">
+    </head>
+    <body>
+        <div class="header">
 
-        <h1>Reddit Gallery</h1>
-        <form id="redditForm">
-            <input list="subreddits" id="subredditName" placeholder="Enter subreddit name" autocomplete="off">
-            <datalist id="subreddits">
-            </datalist>
-            <select id="postTime">
-                <option value="day">Today</option>
-                <option value="week">Week</option>
-                <option value="month">Month</option>
-                <option value="year">Year</option>
-                <option value="all">All</option>
-            </select>
-            <select id="postType">
-                <option value="top">Top</option>
-                <option value="new">New</option>
-                <option value="hot">Hot</option>
-                <option value="rising">Rising</option>
-            </select>
-            <input type="number" id="postLimit" placeholder="10" value="10">
-            <button id="formbutton" type="submit">
-                <img id="searchbtn" src="icons/search.svg" alt="Search Icon">
-            </button>
-        </form>
-    </div>
-    
-    <div id="gallery">
+            <h1>Reddit Gallery</h1>
+            <form id="redditForm">
+                <input list="subreddits" id="subredditName"
+                    placeholder="Enter subreddit name" autocomplete="off">
+                <datalist id="subreddits">
+                </datalist>
+                <select id="postTime">
+                    <option value="day">Today</option>
+                    <option value="week">Week</option>
+                    <option value="month">Month</option>
+                    <option value="year">Year</option>
+                    <option value="all">All</option>
+                </select>
+                <select id="postType">
+                    <option value="top">Top</option>
+                    <option value="new">New</option>
+                    <option value="hot">Hot</option>
+                    <option value="rising">Rising</option>
+                </select>
+                <input type="number" id="postLimit" placeholder="10" value="10">
+                <button id="formbutton" type="submit">
+                    <img id="searchbtn" src="icons/search.svg"
+                        alt="Search Icon">
+                </button>
+            </form>
 
-        <!-- content -->
+            <div id="scaleControl">
+                <label for="scaleSlider">Scale:</label>
+                <input type="range" id="scaleSlider" min="0.5" max="1.5"
+                    step="0.001" value="1">
+            </div>
+        </div>
 
-    </div>
+        <div id="gallery">
 
-    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
-    <script src="customplayer.js" ></script>
-    <script src="script.js"></script>
-    
-</body>
+            <!-- content -->
+
+            <!-- <div id="media">
+                <div id="card">
+                    <div id="upperslider">
+                        <a href="https://www.reddit.com/user/HaneAme"
+                            id="userinfo">
+                            <img id="profilepic"
+                                src="https://styles.redditmedia.com/t5_2sxnsy/styles/profileIcon_r7rnt444sh751.jpg?width=256&amp;height=256&amp;crop=256:256,smart&amp;s=7dfe8833d7908beb3bdbb5aa2ddcd96215124429"
+                                alt>
+                            <div id="reditor" title="HaneAme">HaneAme</div>
+                            <img id="dot" src="/icons/dot.svg" alt>
+                            <div id="since" title="8 hr. ago">8 hr. ago</div>
+                        </a>
+                        <p id="title"
+                            title="FF7 Rebirth Tifa Lockheart swimsuit cosplay HaneAme by HaneAme">FF7
+                            Rebirth Tifa Lockheart swimsuit cosplay HaneAme by
+                            HaneAme</p>
+                    </div>
+                    <a
+                        href="https://www.red    dit.com/r/cosplaygirls/comments/1bwe9mb/ff7_rebirth_tifa_lockheart_swimsuit_cosplay/"
+                        id="lowerslider">
+                        <div id="votes">
+                            <img id="upvote" src="/icons/upvote.png" alt>
+                            <div id="upCount">325</div>
+                            <img id="downvote" src="/icons/downvote.png" alt>
+                            <div id="downCount">9</div>
+                        </div>
+                        <div id="comments">
+                            <img id="comment" src="/icons/comment.svg" alt>
+                            <div id="commentCount">5</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="slider-container" id="content">
+                    <div class="arrow left" onclick="slideLeft()">&#10094;</div>
+                    <img
+                        src="./media/cosplaygirls/FF7 Rebirth Tifa Lockheart swimsuit cosplay HaneAme by HaneAme_0.jpg"
+                        alt="FF7 Rebirth Tifa Lockheart swimsuit cosplay HaneAme by HaneAme"
+                        class="active">
+                    <img
+                        src="./media/cosplaygirls/FF7 Rebirth Tifa Lockheart swimsuit cosplay HaneAme by HaneAme_1.jpg"
+                        alt="FF7 Rebirth Tifa Lockheart swimsuit cosplay HaneAme by HaneAme">
+                    <div class="arrow right"
+                        onclick="slideRight()">&#10095;</div>
+                </div> -->
+                
+        </div>
+        <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+        <script src="customplayer.js"></script>
+        <script src="script.js"></script>
+
+    </body>
 </html>

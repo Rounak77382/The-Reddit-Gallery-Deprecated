@@ -10,12 +10,16 @@ import sys
 api = API()
 api.login()
 from datetime import datetime, timezone
+import os
+import glob
+import concurrent.futures
 
 
 def urltolocalurl(url,post,name,output_dir,safe_title):
     try:
         if "reddit.com/gallery" in url:
             # This is a gallery post
+            localurl = []
             for i, media in enumerate(post.media_metadata.values()):
                 media_url = media['s']['u']
                 file_extension = os.path.splitext(media_url.split("?")[0])[1]  # Remove URL parameters
@@ -25,8 +29,9 @@ def urltolocalurl(url,post,name,output_dir,safe_title):
                     with open(file_path, 'wb') as f:
                         f.write(response.content)
                         
+                        
             #images_data.append({'url': f"{output_dir}/{name}/{safe_title}_{i}{file_extension}", 'title': safe_title})    
-            localurl=f"{output_dir}/{name}/{safe_title}_{i}{file_extension}"
+                localurl.append(f"{output_dir}/{name}/{safe_title}_{i}{file_extension}")
                                 
         elif "redgifs.com/watch" in url:
             # This is a redgifs post
@@ -155,94 +160,141 @@ def download_images(subreddit_name, output_dir,limit=10,post_type="top",since="a
         os.makedirs(f"{output_dir}/{name}")
  
     images_data = []
-    #C:/Users/rouna/OneDrive/Desktop/Nodejs_intro/redditdownlaoder/reddit_gallery_project/reddit_gallery/media/subreddit_name
-    for post in (top_posts):
-        try:
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        
+        futures = []
+        for post in (top_posts):
             try:
-                url = post.url
+                try:
+                    url = post.url
+                    print(url)
+                except Exception as e:
+                    print(f"Error: {e}")
+                    url=None
+
+                try:
+                    title = post.title
+                except Exception as e:
+                    print(f"Error: {e}")
+
+                    title=None
+
+                try:
+                    author = str(post.author)
+                except Exception as e:
+                    print(f"Error: {e}")
+        
+                    author=None
+
+                try:
+                    authordp = post.author.icon_img
+                except Exception as e:
+                    print(f"Error: {e}")
+                    authordp="https://i.redd.it/snoovatar/avatars/8658e16c-55fa-486f-b7c7-00726de2e742.png"
+
+                try:
+                    postedsince = postedsincecalc(post)
+                except Exception as e:
+                    print(f"Error: {e}")
+    
+                    postedsince=None
+                
+                try:
+                    flair = str(post.link_flair_text)
+                except:
+                    flair = "none"
+                
+                try:
+                    comments = f"{int(post.num_comments) // 1000}k" if int(post.num_comments) >= 1000 else int(post.num_comments)
+                except Exception as e:
+                    print(f"Error: {e}")
+
+                    comments='NaN'
+
+                try:
+                    upvotes = f"{int(post.score) // 1000}k" if int(post.score) >= 1000 else int(post.score)
+                except Exception as e:
+                    print(f"Error: {e}")
+
+                    upvotes='NaN'
+
+                try:
+                    downvotes = f"{int(post.score*(1-post.upvote_ratio)) // 1000}k" if int(post.score*(1-post.upvote_ratio)) >= 1000 else int(post.score*(1-post.upvote_ratio))
+                    #print("downvotes: ",post.upvote_ratio, post.score*(1-post.upvote_ratio))
+                except Exception as e:
+                    print(f"Error: {e}")
+
+                    downvotes='NaN'
+
+                try:
+                    safe_title = ''.join(c for c in f"{title} by {author}" if c.isalnum() or c in (' ',)).rstrip()
+                except Exception as e:
+                    print(f"Error: {e}")
+                    safe_title=None
+                    
+                #check if the file already exists
+                file_exists = any(glob.glob(f"{output_dir}/{name}/{safe_title}.*"))
+                from youtube_dl import YoutubeDL
+                import traceback
+                
+                try:
+                    if file_exists:
+                        print(f"File {safe_title} already exists")
+                        localurl = urltolocalurl(url,post,name,output_dir,safe_title)
+                    else:
+                        print(f"Downloading {safe_title}...")
+                        if "redgifs.com/watch" in url:
+                            result = api.get_gif(url.split("/")[-1].split("#")[0]) if '#' in url else api.get_gif(url.split("/")[-1])
+                            localurl=(result.urls.embed_url)
+                            print(f"Downloaded at: {localurl}")
+                            
+                        elif "v.redd.it" in url:
+                            with YoutubeDL({'format': 'bestvideo', 'verbose': False}) as ydl:
+                                video_info = ydl.extract_info(url, download=False)
+                            localurl = (video_info.get('url', 'No video found.'))
+                            
+                        elif url.endswith(('.jpg', '.jpeg', '.png', '.gif', '.bmp', '.svg', '.webp', '.mp4', '.avi', '.mov', '.flv', '.wmv')):
+                            localurl = url
+                            
+                        else:
+                            localurl = urltolocalurl(url,post,name,output_dir,safe_title)
+                            
+                        futures.append(executor.submit(urltolocalurl,url,post,name,output_dir,safe_title))
+                except:
+                    traceback.print_exc()
+                    continue
+                    
+                    
+                if localurl == None:
+                    continue
+                siteurl = "https://www.reddit.com"+str(post.permalink)
+                userurl = "https://www.reddit.com/user/"+str(post.author)
+
+
+                images_data.append({'url': localurl, 'title': safe_title, 'author': author,
+                                    'author_dp': authordp, 'posted_since': postedsince,
+                                    'flair': flair, 'comments': comments, 'upvotes': upvotes,
+                                    'downvotes': downvotes,'siteurl':siteurl,'userurl':userurl,'mediaurl':url})    
+                
+                
+                print("["+json.dumps(images_data[-1])+"]")   
+                
             except Exception as e:
                 print(f"Error: {e}")
-                url=None
-
-            try:
-                title = post.title
-            except Exception as e:
-                print(f"Error: {e}")
-
-                title=None
-
-            try:
-                author = str(post.author)
-            except Exception as e:
-                print(f"Error: {e}")
-     
-                author=None
-
-            try:
-                authordp = post.author.icon_img
-            except Exception as e:
-                print(f"Error: {e}")
-                authordp="https://i.redd.it/snoovatar/avatars/8658e16c-55fa-486f-b7c7-00726de2e742.png"
-
-            try:
-                postedsince = postedsincecalc(post)
-            except Exception as e:
-                print(f"Error: {e}")
- 
-                postedsince=None
+                traceback.print_exc()
+                continue
+            
+        for future in concurrent.futures.as_completed(futures):
             
             try:
-                flair = str(post.link_flair_text)
-            except:
-                flair = "none"
-            
-            try:
-                comments = f"{int(post.num_comments) // 1000}k" if int(post.num_comments) >= 1000 else int(post.num_comments)
-            except Exception as e:
-                print(f"Error: {e}")
-
-                comments='NaN'
-
-            try:
-                upvotes = f"{int(post.score) // 1000}k" if int(post.score) >= 1000 else int(post.score)
-            except Exception as e:
-                print(f"Error: {e}")
-
-                upvotes='NaN'
-
-            try:
-                downvotes = f"{int(post.score*(1-post.upvote_ratio)) // 1000}k" if int(post.score*(1-post.upvote_ratio)) >= 1000 else int(post.score*(1-post.upvote_ratio))
-                #print("downvotes: ",post.upvote_ratio, post.score*(1-post.upvote_ratio))
-            except Exception as e:
-                print(f"Error: {e}")
-
-                downvotes='NaN'
-
-            try:
-                safe_title = ''.join(c for c in f"{title} by {author}" if c.isalnum() or c in (' ',)).rstrip()
-            except Exception as e:
-                print(f"Error: {e}")
-
-                safe_title=None
-            localurl = urltolocalurl(url,post,name,output_dir,safe_title)
+                localurl = future.result()
+                print(f"Downloaded at: {localurl}")
+            except Exception as exc:
+                print(f"Generated an exception: {exc}")
             if localurl == None:
                 continue
-            siteurl = "https://www.reddit.com"+str(post.permalink)
-            userurl = "https://www.reddit.com/user/"+str(post.author)
-
-
-            images_data.append({'url': localurl, 'title': safe_title, 'author': author,
-                                'author_dp': authordp, 'posted_since': postedsince,
-                                'flair': flair, 'comments': comments, 'upvotes': upvotes,
-                                'downvotes': downvotes,'siteurl':siteurl,'userurl':userurl,'mediaurl':url})    
-            
-              
-            print("["+json.dumps(images_data[-1])+"]")   
-            
-        except Exception as e:
-            print(f"Error: {e}")
-            traceback.print_exc()
-            continue
+                
+        
  
 
 #download_images("nsfw_gifs", "public\media", 10, "top", "all")
@@ -263,4 +315,4 @@ if __name__ == "__main__":
 
 # download_images(input("enter subrrdiit: "), "public\media")
 
-# python downloader.py "swimsuitsuccubus" "public\media" 10 top all
+# python downloader.py "CosplayGirls" "public\media" 10 hot

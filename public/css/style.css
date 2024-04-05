@@ -3,7 +3,7 @@
     src: url('../fonts/VAG Rounded Regular.ttf') format('truetype');
 }
 
-body{
+body {
     font-family: 'VAG Rounded', Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -14,24 +14,24 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: #1a282d 1px solid ;
-    height: 56px; 
+    border-bottom: #1a282d 1px solid;
+    height: 65px;
     margin-top: 10px;
-    position: relative ;
+    position: relative;
     z-index: 1;
 }
 
-h1{
+h1 {
     /* text-align: center; */
     color: #fff;
     padding: 0 20px;
     width: fit-content;
-    position:absolute;
+    position: absolute;
     z-index: -999;
     margin: 10px 0;
 }
 
-#redditForm{
+#redditForm {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,8 +46,29 @@ h1{
     z-index: 1;
 }
 
+#scaleControl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    padding: 0;
+    height: fit-content;
+    position: relative;
+    z-index: 1;
+    left: 80%;
+}
 
-#slider{
+#scaleControl > label{
+
+    color: #ffffff;
+    font: monospace;
+    margin: 0 5px;
+
+   
+}
+
+
+#slider {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,7 +82,7 @@ h1{
 
 
 
-#subredditName{
+#subredditName {
     width: 100%;
     padding: 8px;
     margin: 1px 5px;
@@ -71,20 +92,20 @@ h1{
     color: #ffffff;
     font: 15px Arial, sans-serif;
     outline: none;
-    
+
 }
 
-#subredditName::placeholder{
+#subredditName::placeholder {
     color: #ffffff79;
 }
 
 #subredditName:-webkit-autofill {
-    -webkit-box-shadow:0 0 0 1000px #1a282d inset !important;
-    -webkit-text-fill-color: #fff !important;  
-    
+    -webkit-box-shadow: 0 0 0 1000px #1a282d inset !important;
+    -webkit-text-fill-color: #fff !important;
+
 }
 
-#subreddits{
+#subreddits {
     width: 100%;
     padding: 8px;
     border: none;
@@ -95,7 +116,7 @@ h1{
     outline: none;
 }
 
-#postTime{
+#postTime {
     width: 12%;
     padding: 8px;
     margin: 0 2px;
@@ -111,12 +132,12 @@ h1{
     -moz-appearance: textfield !important;
 }
 
-#postTime:hover{
+#postTime:hover {
     cursor: pointer;
-    background-color:#112327;
+    background-color: #112327;
 }
 
-#postType{
+#postType {
     width: 12%;
     padding: 8px;
     margin: 0 2px;
@@ -132,16 +153,16 @@ h1{
     -moz-appearance: textfield !important;
 }
 
-#postType::placeholder{
+#postType::placeholder {
     color: #ffffff79;
 }
 
-#postType:hover{
+#postType:hover {
     cursor: pointer;
-    background-color:#112327;
+    background-color: #112327;
 }
 
-#postLimit{
+#postLimit {
     width: 6%;
     padding: 8px;
     margin: 0 2px;
@@ -161,34 +182,37 @@ h1{
     margin: 0;
 }
 
-#postLimit:hover{
+#postLimit:hover {
     cursor: pointer;
-    background-color:#112327;
+    background-color: #112327;
 }
 
-#postLimit::placeholder{
+#postLimit::placeholder {
     color: #ffffff79;
 }
 
 
-#formbutton{
+#formbutton {
     padding: 0;
     background-color: #1a282d;
-    border: none;   
+    border: none;
 }
-#searchbtn{
+
+#searchbtn {
     height: 30px;
     width: 30px;
     margin: 0;
 }
-#searchbtn:hover{
+
+#searchbtn:hover {
     cursor: pointer;
 }
-#searchbtn:active{
+
+#searchbtn:active {
     transform: scale(0.9);
 }
 
-#gallery{
+#gallery {
     display: flex;
     margin: 20px 30px 60px 30px;
     padding: 0;
@@ -211,7 +235,7 @@ h1{
 #card {
     display: flex;
     flex-direction: column;
-    justify-content:space-between;
+    justify-content: space-between;
     position: absolute;
     width: 100%;
     background-color: #131f23;
@@ -223,22 +247,22 @@ h1{
 }
 
 
-#media:hover #card { 
+#media:hover #card {
     transform: scale(1.1, 1.36) translateY(-10px);
     transition: transform 0.5s;
 }
 
-#card > * {
+#card>* {
     visibility: hidden;
 }
 
-#media:hover #card > * {
+#media:hover #card>* {
     visibility: visible;
 }
 
 
 
-#userinfo{
+#userinfo {
     display: flex;
     justify-content: flex-start;
     align-items: start;
@@ -246,14 +270,14 @@ h1{
     padding: 0;
     height: fit-content;
     flex-wrap: nowrap;
-    max-height: 25px; 
+    max-height: 25px;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-#profilepic{
+#profilepic {
     width: 25px;
     height: 25px;
     border-radius: 50%;
@@ -261,12 +285,13 @@ a{
 }
 
 
-#reditor,#flair{
+#reditor,
+#flair {
     height: fit-content;
     font: 15px Arial;
 }
 
-#reditor{
+#reditor {
     margin: 5px 5px 1px 1px;
     color: aqua;
     font-weight: bold;
@@ -274,7 +299,7 @@ a{
     max-height: 14px;
 }
 
-#flair{
+#flair {
     margin: 4px 1px 1px 1px;
     background-color: #d3f5ff;
     color: #0b1416;
@@ -285,18 +310,18 @@ a{
     font-size: 12px;
 }
 
-#dot{
+#dot {
     height: 12px;
     margin: 6px 0px;
 }
 
-#since{
+#since {
     margin: 6px 0px 1px 1px;
     color: rgb(255, 255, 255);
     font-size: 10px;
 }
 
-#title{
+#title {
     margin: 3px 5px;
     padding: 0;
     font-size: 15px;
@@ -307,9 +332,10 @@ a{
     text-overflow: ellipsis;
 }
 
-#votes{
+#votes {
     display: flex;
-    justify-content: center;align-items: center;
+    justify-content: center;
+    align-items: center;
     align-content: center;
     background-color: #0b1416;
     width: fit-content;
@@ -318,9 +344,10 @@ a{
     padding: 0 7.5px 0 5px;
 }
 
-#comments{
+#comments {
     display: flex;
-    justify-content: center;align-items: center;
+    justify-content: center;
+    align-items: center;
     align-content: center;
     background-color: #0b1416;
     width: fit-content;
@@ -329,14 +356,15 @@ a{
     padding: 0 5px 0 5px;
 }
 
-#votes:hover,#comments:hover{
+#votes:hover,
+#comments:hover {
     cursor: pointer;
     background-color: #1e4c57;
 }
 
 
 
-#lowerslider{
+#lowerslider {
     display: flex;
 
     align-items: center;
@@ -346,7 +374,12 @@ a{
 
 }
 
-#upvote,#downvote,#upCount,#downCount,#comment,#commentCount{
+#upvote,
+#downvote,
+#upCount,
+#downCount,
+#comment,
+#commentCount {
     height: 18px;
     margin: 3px;
     border-radius: 10px;
@@ -361,37 +394,37 @@ a{
 #media:hover #title,
 #media:hover #comments,
 #media:hover #since,
-#media:hover #votes
-{
+#media:hover #votes {
     transform: scaleY(0.78);
 }
 
-img#content{
+img#content {
     min-width: 250px;
     height: 400px;
-    border-radius: 10px; 
+    border-radius: 10px;
     transition: ease-out 0.2s;
     position: relative;
     z-index: 1;
     background: #1a282d;
 }
 
-.video-container{
+.video-container {
     transition: ease-out 0.2s;
-    border-radius: 10px; 
+    border-radius: 10px;
     position: relative;
     z-index: 1;
     --video-height: 400px;
     height: var(--video-height);
     display: flex;
     flex-direction: column-reverse;
-    width: fit-content; 
-    margin: 0 auto; 
+    width: fit-content;
+    margin: 0 auto;
 }
-video{
+
+video {
     min-width: 250px;
     height: 400px;
-    border-radius: 10px; 
+    border-radius: 10px;
     background: #1a282d;
 }
 
@@ -400,15 +433,76 @@ video::-webkit-media-controls-panel {
     background-image: linear-gradient(transparent, transparent) !important;
 }
 
-#content:hover{
+#content:hover {
     transform: scale(1.1);
     transition: transform 0.5s;
-    
+
 }
 
+.slider-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    z-index: 1;
+    transition: ease-out 0.2s;
+}
+
+.slider-container img {
+    display: none;
+    transition: opacity 1s ease-in-out;
+    min-width: 250px;
+    height: 400px;
+    border-radius: 10px;
+    
+    background: #1a282d;
+    transition: transform 0.5s ease-in-out;
+}
+
+#slider-container:hover {
+    transform: scale(1.1);
+    transition: transform 0.5s;
+
+}
+
+.slider-container img.active {
+    display: block;
+}
+
+.slider-container .arrow {
+    position: absolute;
+    top: 50%;
+    margin: 0 5px;
+    border-radius: 10%; 
+    transform: translateY(-50%);
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 150%;
+}
+
+.slider-container .arrow:hover {
+    background-color: #1e4c5756;
+}
+
+.slider-container .arrow.left {
+    left: 0;
+}
+
+.slider-container .arrow.right {
+    right: 0;
+}
+
+#content:hover {
+    transform: scale(1.1);
+    transition: transform 0.5s;
+
+}
 
 @media screen and (max-width: 600px) {
-    #redditForm{
+    #redditForm {
         width: 100%;
     }
 }

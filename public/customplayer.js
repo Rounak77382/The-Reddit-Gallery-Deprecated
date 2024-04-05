@@ -288,6 +288,7 @@ function addCustomControls(videoContainer) {
 
       fullScreenButton.addEventListener('click', function() {
         if (!document.fullscreenElement) {
+          gallery.style.zoom = '1';
           videoContainer.style.setProperty('height', `100vh`);
           video.style.setProperty('height', `100%`);
           imgs.forEach(img => img.style.setProperty('height', `22px`));
