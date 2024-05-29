@@ -1,5 +1,6 @@
-const snoowrap = require('snoowrap');
-require('dotenv').config();
+import snoowrap from 'snoowrap';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const r = new snoowrap({
   userAgent: 'testscript by RS_ted',
@@ -31,4 +32,5 @@ async function listSubreddits(subredditName) {
   const subredditResults = await r.searchSubredditNames({ query: subredditName },{includeNsfw: true});
   return subredditResults;
 }
-module.exports = listSubreddits;
+
+export default listSubreddits;
