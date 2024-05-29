@@ -262,6 +262,10 @@ export async function* downloadImages(subredditName, outputDir = './public/media
 
     spinner.stop();
 
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+    }
+
 
     const outputPath = outputDir + '/' + name;
     if (!fs.existsSync(outputPath)) {
