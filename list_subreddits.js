@@ -10,24 +10,6 @@ const r = new snoowrap({
   password: 'Rounak#2003'
 });
 
-// async function listSubreddits() {
-//   const subredditName = await new Promise((resolve) => {
-//     process.stdout.write("Enter the subreddit: r/", () => {
-//       process.stdin.once('data', (data) => {
-//         resolve(data.toString().trim());
-//       });
-//     });
-//   });
-
-//   const subredditResults = await r.searchSubredditNames({ query: subredditName },{includeNsfw: true});
-
-//   subredditResults.forEach((post) => {
-//     console.log(`${post}`);
-//   });
-// }
-// listSubreddits();
-
-
 async function listSubreddits(subredditName) {
   const subredditResults = await r.searchSubredditNames({ query: subredditName },{includeNsfw: true});
   return subredditResults;

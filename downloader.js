@@ -11,15 +11,6 @@ import process from 'node:process';
 import e from 'express';
 import qs from 'qs';
 
-
-// const r = new snoowrap({
-//     userAgent: 'testscript by RS_ted',
-//     clientId: process.env.praw_api_client_id,
-//     clientSecret: process.env.praw_api_client_secret,
-//     username: 'RS_ted',
-//     password: 'Rounak#2003'
-//   });
-
 async function getAccessToken() {
     const authString = `${process.env.praw_api_client_id}:${process.env.praw_api_client_secret}`;
     const authBuffer = Buffer.from(authString, 'utf8');

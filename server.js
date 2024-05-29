@@ -35,17 +35,6 @@ app.use(session({
     cookie: { secure: false }
   }));
 
-// app.get('/subreddits', (req, res) => {
-//   fs.readFile('subreddits.txt', 'utf8', (err, data) => {
-//     if (err) {
-//       console.error('Failed to read file:', err);
-//       res.status(500).send('Server error');
-//       return;
-//     }
-//     res.send(data.split('\n'));
-//   });
-// });
-
 
 
 app.get('/subreddits/:name', async (req, res) => {
