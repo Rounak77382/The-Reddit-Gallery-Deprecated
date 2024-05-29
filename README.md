@@ -1,54 +1,70 @@
 # Reddit Gallery Viewer
 
-Welcome to the Reddit Gallery Viewer project! This is a powerful tool built with Node.js that allows you to quickly and efficiently view media from various subreddits. The application is designed with the purpose of keeping information intact and easily accessible. As a secondary feature, it also allows you to download the media for offline viewing.
+Welcome to the Reddit Gallery Viewer project! This is a powerful tool built with Node.js that allows you to quickly and efficiently view media from various subreddits. The application is designed to keep information intact and easily accessible. Additionally, it allows you to download the media for offline viewing.
 
 ## Features
 
-- **Download media from any subreddit**: Just enter the subreddit name and the tool will fetch the media for you. The downloaded files will be stored in the `/public/media` directory in your project folder.
-- **Filter posts by time**: You can choose to download media from posts made Today, This Week, This Month, This Year, or All time.
-- **Filter posts by type**: Choose whether you want to download media from the Top, New, Hot, or Rising posts.
-- **Set a limit on the number of posts to download**: You can set a limit on the number of posts from which to download media.
+- **Download Media from Any Subreddit**: Enter the subreddit name, and the tool will fetch and download the media for you. The downloaded files will be stored in the `/public/media` directory.
+- **Filter Posts by Time**: Download media from posts made Today, This Week, This Month, This Year, or All Time.
+- **Filter Posts by Type**: Choose to download media from the Top, New, Hot, or Rising posts.
+- **Set a Limit on the Number of Posts**: Specify the maximum number of posts to download media from.
 
 ## Installation
 
-1. **Clone this repository**: Use the command `git clone https://github.com/Rounak77382/The-Reddit-Gallery.git` to clone this repository to your local machine.
-2. **Install the dependencies**: Navigate to the project directory and run `npm install` to install all the necessary dependencies.
+1. **Clone the Repository**: Use the following command to clone the repository to your local machine:
+    ```bash
+    git clone https://github.com/Rounak77382/The-Reddit-Gallery.git
+    ```
+2. **Install Dependencies**: Navigate to the project directory and run this command to install all necessary dependencies:
+    ```bash
+    npm install
+    ```
 
 ## Usage
 
-1. **Start the server**: Run `npm start` to start the server. The application will automatically open in your default web browser.
-2. **Enter the subreddit name**: Type in the name of the subreddit from which you want to download media.
-3. **Select the post time and type**: Choose the time period and type of posts from which to download media.
-4. **Set the post limit**: Enter the maximum number of posts from which to download media.
-5. **Start downloading**: Click the search button to start downloading media.
+1. **Start the Server**: To start the server, run:
+    ```bash
+    npm start
+    ```
+    The application will automatically open in your default web browser.
+
+2. **Enter Subreddit Name**: Type in the name of the subreddit from which you want to download media.
+3. **Select Post Time and Type**: Choose the time period and type of posts to download media from.
+4. **Set Post Limit**: Enter the maximum number of posts to download media from.
+5. **Start Downloading**: Click the search button to start downloading media.
 
 ## Login Feature
 
-This application also includes a login feature for users who want to save their preferences or have a personalized experience. Here's how you can use it:
+The application includes a login feature for users who want to save their preferences or have a personalized experience.
 
-1. **Navigate to the login page**: Click on the 'Login' button on the top right corner of the homepage.
-2. **Enter your credentials**: If you already have an account, enter your username and password and click 'Login'. If you don't have an account, click on 'Sign Up' to create a new one.
-3. **Sign Up**: Enter your desired username, a valid email address, and a strong password. Click 'Sign Up' to create your account.
-4. **Verify your email**: A verification link will be sent to your email. Click on the link to verify your account.
-5. **Login**: Once your account is verified, you can login with your username and password.
+### How to Use the Login Feature
 
-Remember, your password is encrypted and stored securely. We do not have access to your password and cannot retrieve it for you. If you forget your password, you will have to reset it.
+1. **Navigate to the Login Page**: Click on the 'Login' button at the top right corner of the homepage.
+2. **Enter Your Credentials**: If you have an account, enter your username and password and click 'Login'. If you don't have an account, click 'Sign Up' to create one.
+3. **Sign Up**: Provide a desired username, a valid email address, and a strong password. Click 'Sign Up' to create your account.
+4. **Verify Your Email**: A verification link will be sent to your email. Click the link to verify your account.
+5. **Login**: Once your account is verified, log in with your username and password.
+
+> **Note**: Your password is encrypted and stored securely. We do not have access to your password and cannot retrieve it. If you forget your password, you will need to reset it.
 
 ## Dependencies
 
-This project uses the following dependencies:
+The project uses the following dependencies:
 
-- axios: Promise based HTTP client for the browser and node.js
-- body-parser: Node.js body parsing middleware
-- date-fns: Modern JavaScript date utility library
-- date-fns-tz: Comprehensive, yet simple, parsing and formatting for JavaScript Dates
-- dotenv: Loads environment variables from .env for nodejs projects
-- esm: Tomorrow's ECMAScript modules today!
-- express: Fast, unopinionated, minimalist web framework for node
-- express-session: Simple session middleware for Express
-- open: Open stuff like URLs, files, executables
-- ora: Elegant terminal spinner
-- redgif: A simple API wrapper for Redgifs
-- snoowrap: A fully-featured JavaScript wrapper for the reddit API
-- socket.io: Realtime application framework (Node.JS server)
+- **axios**: Promise-based HTTP client for the browser and Node.js
+- **body-parser**: Node.js body parsing middleware
+- **date-fns**: Modern JavaScript date utility library
+- **date-fns-tz**: Comprehensive parsing and formatting for JavaScript Dates
+- **dotenv**: Loads environment variables from .env for Node.js projects
+- **esm**: Tomorrow's ECMAScript modules today
+- **express**: Fast, unopinionated, minimalist web framework for Node.js
+- **express-session**: Simple session middleware for Express
+- **open**: Open URLs, files, executables, etc.
+- **ora**: Elegant terminal spinner
+- **redgif**: Simple API wrapper for Redgifs
+- **snoowrap**: Fully-featured JavaScript wrapper for the Reddit API
+- **socket.io**: Real-time application framework (Node.js server)
 
+## Conclusion
+
+With these features and instructions, you are ready to set up and use the Reddit Gallery Viewer to download and view media from your favorite subreddits. Enjoy exploring and downloading content with ease!
