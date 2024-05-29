@@ -50,21 +50,20 @@ The application includes a login feature for users who want to save their prefer
 
 ## Dependencies
 
-The project uses the following dependencies:
+The project requires Node.js to run. If you don't have Node.js installed, follow these steps to download and install it:
 
-- **axios**: Promise-based HTTP client for the browser and Node.js
-- **body-parser**: Node.js body parsing middleware
-- **date-fns**: Modern JavaScript date utility library
-- **date-fns-tz**: Comprehensive parsing and formatting for JavaScript Dates
-- **dotenv**: Loads environment variables from .env for Node.js projects
-- **esm**: Tomorrow's ECMAScript modules today
-- **express**: Fast, unopinionated, minimalist web framework for Node.js
-- **express-session**: Simple session middleware for Express
-- **open**: Open URLs, files, executables, etc.
-- **ora**: Elegant terminal spinner
-- **redgif**: Simple API wrapper for Redgifs
-- **snoowrap**: Fully-featured JavaScript wrapper for the Reddit API
-- **socket.io**: Real-time application framework (Node.js server)
+### Installing Node.js
+
+1. **Visit the Node.js Website**: Go to the [official Node.js website](https://nodejs.org/).
+2. **Download the Installer**: Click on the appropriate version for your operating system (Windows, macOS, or Linux). It is recommended to download the LTS (Long Term Support) version for stability.
+3. **Run the Installer**: Once the download is complete, run the installer and follow the instructions.
+4. **Verify Installation**: After installation, open a terminal or command prompt and type the following commands to verify that Node.js and npm (Node Package Manager) are installed correctly:
+    ```bash
+    node -v
+    npm -v
+    ```
+
+By following these steps, you will have Node.js and npm installed on your system. Once Node.js is installed, you can proceed with the project setup.
 
 ## Conclusion
 
