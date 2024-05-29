@@ -17,6 +17,7 @@ Welcome to the Reddit Gallery Viewer project! This is a powerful tool built with
     ```
 2. **Install Dependencies**: Navigate to the project directory and run this command to install all necessary dependencies:
     ```bash
+    cd The-Reddit-Gallery
     npm install
     ```
 
