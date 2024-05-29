@@ -1,6 +1,6 @@
 # Reddit Gallery Viewer
 
-Welcome to the Reddit Gallery Viewer project! This is a powerful tool built with Node.js that allows you to quickly and efficiently view media from various subreddits. The application is designed to keep information intact and easily accessible. Additionally, it allows you to download the media for offline viewing.
+Welcome to the Reddit Gallery Viewer project! This is a tool built with Node.js that allows you to quickly and efficiently view media from various subreddits. The application is designed to keep information intact and easily accessible. Additionally, it allows you to download the media for offline viewing.
 
 ## Features
 
