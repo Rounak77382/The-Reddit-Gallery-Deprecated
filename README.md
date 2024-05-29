@@ -11,7 +11,7 @@ Welcome to the Reddit Gallery Viewer project! This is a powerful tool built with
 
 ## Installation
 
-1. **Clone this repository**: Use the command `git clone <repository-url>` to clone this repository to your local machine.
+1. **Clone this repository**: Use the command `git clone https://github.com/Rounak77382/The-Reddit-Gallery.git` to clone this repository to your local machine.
 2. **Install the dependencies**: Navigate to the project directory and run `npm install` to install all the necessary dependencies.
 
 ## Usage
