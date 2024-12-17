@@ -169,6 +169,7 @@ async function urltolocalurl(url, post, name, outputDir, safeTitle) {
             const filePath = path.join(outputDir, `${safeTitle}${fileExtension}`);
             if (!fs.existsSync(filePath)) {
                 const response = await axios.get(url, { responseType: 'stream' });
+                console.log("response: ", response);
                 const writer = fs.createWriteStream(filePath);
                 response.data.pipe(writer);
                 new Promise((resolve, reject) => {
@@ -305,19 +306,22 @@ export async function* downloadImages(subredditName, outputDir = './public/media
 
             
             
-            else if (post.is_reddit_media_domain == false ) {
+            else if (post.is_reddit_media_domain == false && post.preview && post.preview.reddit_video_preview != null) {
 
                 aspectRatio = post.preview.reddit_video_preview.width / post.preview.reddit_video_preview.height;
 
             }
+
             
-            else {
+            else if (post.preview && post.preview.images[0].source != null) {
                 try {
-                    aspectRatio = post.preview.enabled ? post.preview.images[0].source.width / post.preview.images[0].source.height : NaN;
+                    aspectRatio = post.preview.images[0].source.width / post.preview.images[0].source.height;
                 } catch {
                     aspectRatio = NaN;
                 }
             }
+
+        
             const title = post.title;
             const author = post.author.name;
             let authorDp;
@@ -337,7 +341,7 @@ export async function* downloadImages(subredditName, outputDir = './public/media
             const isNSFW = post.over_18;
             const safeTitle = `${title} by ${author}`.replace(/[^a-zA-Z0-9 ]/g, '').trim();
 
-            const fileExists = fs.existsSync(path.join(outputPath, `${safeTitle}.*`));
+            // const fileExists = fs.existsSync(path.join(outputPath, `${safeTitle}.*`));
     
                 const localUrl = await urltolocalurl(url, post, name, outputPath, safeTitle);
                 if (localUrl) {
@@ -486,7 +490,7 @@ export async function* downloadImages(subredditName, outputDir = './public/media
 //     downloadImages(subredditName, outputDir, limit, postType, since);
 //   }
 
-// const imageGenerator = downloadImages('cosplaygirls', './public/media', 20, 'top', 'today');
+// const imageGenerator = downloadImages('news', './public/media', 2, 'top', 'today');
 
 // for await (const value of imageGenerator) {
 //     if (value instanceof Promise) {
